@@ -12,7 +12,8 @@ pipeline{
         }
         stage("Build code"){
             steps{
-                sh "mvn -DartifactId=${params.WARNAME} package"
+                sh "mvn package"
+                archiveArtifacts artifacts: 'target/*.war'
                 
               //  echo "${warname}"
             }
