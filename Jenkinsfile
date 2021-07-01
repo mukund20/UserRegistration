@@ -12,9 +12,12 @@ pipeline{
         stage("Build code"){
             steps{
                 sh "mvn clean package"
-                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
-                
-              //  echo "${warname}"
+            }
+            post{
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
             }
         }
     }
