@@ -1,3 +1,4 @@
+properties([parameters([string('WARNAME')])])
 pipeline{
     agent any
     environment {
@@ -11,7 +12,8 @@ pipeline{
         }
         stage("Build code"){
             steps{
-                sh "mvn clean package target/${warname}.war"
+                sh "mvn clean package ${params.WARNAME}"
+                
               //  echo "${warname}"
             }
         }
