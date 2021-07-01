@@ -12,7 +12,7 @@ pipeline{
         stage("Build code"){
             steps{
                 sh "mvn clean package"
-                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
                 
               //  echo "${warname}"
             }
