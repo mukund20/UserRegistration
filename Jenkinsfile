@@ -12,6 +12,7 @@ pipeline{
         stage("Build code"){
             steps{
                 sh "mvn clean package"
+                echo "${warname}"
             }
         }
     }
