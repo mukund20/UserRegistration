@@ -12,7 +12,7 @@ pipeline{
         }
         stage("Build code"){
             steps{
-                sh "mvn clean package ${params.WARNAME}"
+                sh "mvn -DartifactId=${params.WARNAME} package"
                 
               //  echo "${warname}"
             }
