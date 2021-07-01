@@ -1,4 +1,3 @@
-properties([parameters([string('WARNAME')])])
 pipeline{
     agent any
     environment {
