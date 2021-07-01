@@ -13,7 +13,7 @@ pipeline{
         stage("Build code"){
             steps{
                 sh "mvn package"
-                archiveArtifacts artifacts: 'target/*.war'
+                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
                 
               //  echo "${warname}"
             }
