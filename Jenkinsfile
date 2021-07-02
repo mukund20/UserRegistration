@@ -21,6 +21,6 @@ pipeline{
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
+       */
        }
-      */
 }
