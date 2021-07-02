@@ -14,16 +14,17 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-    	    post{
-        	    success{
-            	    echo "Archiving Artifacts..."
-            	    archiveArtifacts artifacts: '**/target/*.war'
-         	}
-     	}
         stage("Test Code"){
             steps{
                 sh "mvn test"
             }
-        }          
+        }
+        stage("Deploy code"){
+            steps{
+                sshagent(['deploy_user']){
+                sh "scp -o StrictHostKeyChecking=no target/*.war  ec2-user@3.20.238.206:/opt/apache-tomcat-9.0.48/webapps"
+                }
+            }
+        }
     }
 }
