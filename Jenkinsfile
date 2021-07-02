@@ -14,6 +14,12 @@ pipeline{
                 sh "mvn clean package"
             }
         }
+        post{
+            success{
+                echo "Archiving Artifacts..."
+                archiveartifacts Artifacts: '**/target/*.war'
+            }
+        }
         stage("Test Code"){
             steps{
                 sh "mvn test"
