@@ -14,12 +14,12 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        post{
-            success{
-                echo "Archiving artifacts..."
-                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true 
-            }
-        }
+    post{
+        always{
+            echo "Archiving artifacts..."
+            archiveArtifacts artifacts: '**/target/*.war', fingerprint: true 
+          }
+      }
         stage("Test Code"){
             steps{
                 sh "mvn test"
