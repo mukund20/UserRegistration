@@ -17,7 +17,7 @@ pipeline{
     post{
         success{
             echo "Archiving Artifacts..."
-            archiveartifacts Artifacts: '**/target/*.war'
+            archiveArtifacts artifacts: '**/target/*.war'
          }
      }
         stage("Test Code"){
